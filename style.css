@@ -48,27 +48,15 @@ header {
     z-index: 20; /* Muito alto, pra ficar acima de qualquer overlay e visível */
 }
 
-/* Estilo do título principal no header */
-header h1 {
-    font-size: 3.5em; /* Mantém o tamanho, mas a logo se ajusta automaticamente */
-    margin-bottom: 10px;
-    text-align: center; /* Centraliza a logo */
-    text-shadow: none; /* Remove sombra se a logo for imagem */
-}
-
-/* Logo dentro do h1 - responsiva e com sombra sutil se quiser */
-header h1 img {
-    width: 120px;
-    height: auto; /* Mantém a proporção */
+/* Logo no header - responsiva, circular e com sombra mais marcante só no círculo */
+header img {
+    max-width: 160px; /* Como no inline style do HTML */
+    height: auto;
+    width: 160px; /* Largura fixa pra manter proporção circular */
     display: block;
-    margin: 0 auto; /* Centraliza */
-    box-shadow: 0 2px 10px rgba(0,0,0,0.1); /* Sombra leve */
-}
-
-/* Estilo do parágrafo no header */
-header p {
-    font-size: 1.2em;
-    opacity: 0.9;
+    margin: 0 auto;
+    border-radius: 50%; /* Força clip circular perfeito (corta cantos se necessário) */
+    filter: drop-shadow(0 2px 10px rgba(0,0,0,0.2)); /* Sombra mais intensa só no conteúdo visível (círculo) */
 }
 
 /* Navegação - Define o menu de navegação com fundo escuro (sólido, acima de tudo) */
@@ -216,28 +204,29 @@ section {
     text-align: justify; /* Justificado pra texto fluir */
 }
 
-/* Vídeo na seção #novidades - Menor e centralizado */
+/* Vídeo na seção #novidades - Container vertical 9:16 com altura fixa de 650px (sem barras pretas) */
 #novidades .video-container {
-    max-width: 50%; /* Diminuí mais pra largura menor */
-    max-height: 600px; /* Limite de altura pra caber na tela  */
+    width: calc(650px * 9 / 16); /* Largura calculada pra 9:16 com altura 650px (~366px) */
+    max-width: 100%; /* Não excede a tela */
+    height: 650px; /* Altura fixa em desktop */
+    aspect-ratio: 9 / 16; /* Proporção vertical exata pro Short (sem barras) */
     margin: 30px auto; /* Centralizado */
     overflow: hidden;
     border-radius: 15px;
     box-shadow: 0 6px 20px rgba(0,0,0,0.15);
     background: #f8f9fa;
+    display: block; /* Simples, sem flex desnecessário */
 }
 
-/* Estilo do vídeo dentro do container - Mantém proporção, mas respeita a altura max */
-#novidades .video-container video {
+/* Estilo do iframe dentro do container de novidades - Preenche 100% sem distorção */
+#novidades .video-container iframe {
     width: 100%;
-    max-height: 100%; /* Limita a altura do vídeo pro container */
-    height: auto;
+    height: 100%; /* Preenche o container na proporção certa */
     display: block;
-    object-fit: contain; /* Proporção sem esticar */
-    image-rendering: auto;
-    border-radius: 15px;
+    border-radius: 15px; /* Arredonda as bordas do iframe */
+    border: none; /* Remove borda padrão do iframe */
 }
-
+        
 /* Seção #localizacao - Estilo geral  */
 #localizacao {
     background-color: #f8f9fa; /* Fundo cinza claro */
@@ -354,7 +343,7 @@ footer {
     background: #f8f9fa; /* Fundo neutro se o vídeo tiver transparência */
 }
 
-/* Estilo do vídeo dentro do container */
+/* Estilo do vídeo dentro do container (para home) */
 .video-container video {
     width: 100%;
     height: auto;
@@ -371,13 +360,10 @@ html {
 
 /* Responsividade - Ajustes para telas menores (mobile) */
 @media (max-width: 768px) {
-    /* Título do header menor em mobile */
-    header h1 {
-        font-size: 2em;
-    }
-
-    header h1 img {
-        max-width: 200px; /* Ainda menor no celular */
+    /* Logo do header menor em mobile */
+    header img {
+        max-width: 120px; /* Menor no celular */
+        width: 120px; /* Mantém circular */
     }
     
     /* Links de nav em bloco em mobile */
@@ -399,7 +385,7 @@ html {
 
     /* Container do vídeo menor em mobile */
     .video-container {
-        max-width: 50%; /* Ainda menor no mobile */
+        max-width: 90%; /* Maior no mobile pra preencher melhor */
         margin: 20px auto;
     }
     
@@ -408,11 +394,17 @@ html {
         object-fit: cover; /* No mobile, cobre a área pra preencher melhor */
     }
 
-    /* Responsividade pro vídeo de novidades no mobile */
+    /* Responsividade pro vídeo de novidades no mobile (preenche tela vertical sem barras) */
     #novidades .video-container {
-        max-width: 80%; /* Um pouco maior no mobile, mas ainda compacto */
-        max-height: 250px; /* Altura menor no celular pra caber fácil */
+        width: 100%; /* Largura total no mobile */
+        height: auto; /* Altura proporcional baseada na largura */
+        max-height: 650px; /* Limite pra não explodir a tela */
+        aspect-ratio: 9 / 16; /* Mantém proporção vertical sem barras */
         margin: 20px auto;
+    }
+    
+    #novidades .video-container iframe {
+        height: 100%; /* Preenche o container */
     }
     
     #novidades h2 {
