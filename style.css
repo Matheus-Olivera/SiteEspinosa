@@ -277,7 +277,7 @@ section {
 /* Parágrafo da seção #contact */
 #contact p {
     font-size: 1.1em;
-    margin-bottom: 30px;
+    margin-bottom: 15px; /* Espaçamento menor entre parágrafos */
 }
 
 /* Formulário - Configurações gerais para o formulário de contato */
@@ -358,6 +358,57 @@ html {
     scroll-behavior: smooth;
 }
 
+/* Estilos para ícones sociais na contato (WhatsApp e Instagram) - com texto clicável */
+#contact a[href^="https://wa.me"],
+#contact a[href^="https://www.instagram.com"] {
+    text-decoration: none; /* Remove underline do link */
+    display: inline-flex; /* Alinha ícone e texto na linha */
+    align-items: center; /* Centraliza verticalmente */
+    margin: 0 10px; /* Espaço entre os links */
+}
+
+#contact a[href^="https://wa.me"] i {
+    color: #25D366; /* Verde oficial do WhatsApp */
+    font-size: 1.5em;
+    margin-right: 5px; /* Espaço entre ícone e texto */
+    transition: transform 0.3s ease, color 0.3s ease;
+}
+
+#contact a[href^="https://wa.me"] {
+    color: #25D366; /* Cor do texto igual ao ícone */
+    font-weight: bold; /* Texto em negrito */
+}
+
+#contact a[href^="https://wa.me"]:hover i {
+    transform: scale(1.2); /* Aumenta o ícone no hover */
+    color: #128C7E; /* Verde mais escuro no hover */
+}
+
+#contact a[href^="https://wa.me"]:hover {
+    color: #128C7E; /* Texto muda no hover também */
+}
+
+#contact a[href^="https://www.instagram.com"] i {
+    color: #E4405F; /* Rosa/roxo oficial do Instagram */
+    font-size: 1.5em;
+    margin-right: 5px; /* Espaço entre ícone e texto */
+    transition: transform 0.3s ease, color 0.3s ease;
+}
+
+#contact a[href^="https://www.instagram.com"] {
+    color: #E4405F; /* Cor do texto igual ao ícone */
+    font-weight: bold; /* Texto em negrito */
+}
+
+#contact a[href^="https://www.instagram.com"]:hover i {
+    transform: scale(1.2); /* Aumenta o ícone no hover */
+    color: #C13584; /* Roxo mais escuro no hover */
+}
+
+#contact a[href^="https://www.instagram.com"]:hover {
+    color: #C13584; /* Texto muda no hover também */
+}
+
 /* Responsividade - Ajustes para telas menores (mobile) */
 @media (max-width: 768px) {
     /* Logo do header menor em mobile */
@@ -420,5 +471,17 @@ html {
     #localizacao p {
         font-size: 1em; /* Levemente menor no mobile */
         padding: 0 15px; /* Espaçamento lateral */
+    }
+
+    /* Ícones sociais menores no mobile */
+    #contact a[href^="https://wa.me"] i,
+    #contact a[href^="https://www.instagram.com"] i {
+        font-size: 1.2em; /* Um pouco menor no celular */
+    }
+
+    #contact a[href^="https://wa.me"],
+    #contact a[href^="https://www.instagram.com"] {
+        margin: 0 5px; /* Espaço menor entre links no mobile */
+        font-size: 0.95em; /* Texto um tiquinho menor */
     }
 }
