@@ -1,487 +1,116 @@
-/* Reset e configurações gerais */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
+/* Reset */
+* { margin: 0; padding: 0; box-sizing: border-box; }
 
-/* Configurações gerais do body, incluindo fonte, linha e cor de texto, com fundo neutro sólido (sem imagem pra não cobrir header/nav) */
-body {
-    font-family: 'Arial', sans-serif;
-    line-height: 1.6;
-    color: #333;
-    background-color: #f8f9fa; /* Fundo neutro sólido pro header/nav e footer */
-    position: relative;
-}
+/* Body geral */
+body { font-family: 'Arial', sans-serif; line-height: 1.6; color: #333; background-color: #f8f9fa; position: relative; }
 
-/* Wrapper pro conteúdo principal com background das tintas (começa exatamente abaixo do header/nav) */
-.main-content {
-    background-image: url('assets/img/fundo.png');
-    background-size: cover;
-    background-position: center;
-    background-attachment: scroll; /* Muda de fixed para scroll, pra imagem começar no topo do main, não da viewport */
-    background-repeat: no-repeat;
-    min-height: 100vh; /* Altura mínima pra cobrir o conteúdo */
-    position: relative;
-}
+/* Main content com fundo */
+.main-content { background: url('assets/img/fundo.png') center/cover no-repeat scroll; min-height: 100vh; position: relative; }
 
-/* Overlay semi-opaco só no main-content (não afeta header/nav) */
-.main-content::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(248, 249, 250, 0.9); /* Opacidade ajustada pra legibilidade - só no conteúdo */
-    z-index: 0; /* Baixo, pra seções ficarem por cima */
-}
+/* Overlay no main */
+.main-content::before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(248, 249, 250, 0.9); z-index: 0; }
 
-/* Header - Define o estilo do cabeçalho com gradiente inspirado na marca Coral (sólido, acima de tudo) */
-header {
-    background: linear-gradient(135deg, #007bff, #0056b3);
-    color: #fff;
-    padding: 40px 20px;
-    text-align: center;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-    position: relative;
-    z-index: 20; /* Muito alto, pra ficar acima de qualquer overlay e visível */
-}
+/* Header com gradiente */
+header { background: linear-gradient(135deg, #007bff, #0056b3); color: #fff; padding: 40px 20px; text-align: center; box-shadow: 0 2px 10px rgba(0,0,0,0.1); position: relative; z-index: 20; }
 
-/* Logo no header - responsiva, circular e com sombra mais marcante só no círculo */
-header img {
-    max-width: 160px; /* Como no inline style do HTML */
-    height: auto;
-    width: 160px; /* Largura fixa pra manter proporção circular */
-    display: block;
-    margin: 0 auto;
-    border-radius: 50%; /* Força clip circular perfeito (corta cantos se necessário) */
-    filter: drop-shadow(0 2px 10px rgba(0,0,0,0.2)); /* Sombra mais intensa só no conteúdo visível (círculo) */
-}
+/* Logo no header */
+header img { width: 160px; height: auto; display: block; margin: 0 auto; border-radius: 50%; filter: drop-shadow(0 2px 10px rgba(0,0,0,0.2)); }
 
-/* Navegação - Define o menu de navegação com fundo escuro (sólido, acima de tudo) */
-nav {
-    background-color: #333; /* Fundo preto sólido */
-    padding: 15px;
-    text-align: center;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-    position: relative;
-    z-index: 20; /* Muito alto, igual ao header */
-}
+/* Nav com fundo escuro */
+nav { background-color: #333; padding: 15px; text-align: center; box-shadow: 0 2px 5px rgba(0,0,0,0.1); position: relative; z-index: 20; }
 
-/* Estilo dos links de navegação */
-nav a {
-    color: #fff;
-    margin: 0 20px;
-    text-decoration: none;
-    font-weight: bold;
-    transition: color 0.3s ease;
-}
+/* Links da nav */
+nav a { color: #fff; margin: 0 20px; text-decoration: none; font-weight: bold; transition: color 0.3s ease; }
+nav a:hover { color: #007bff; }
 
-/* Efeito hover nos links de navegação */
-nav a:hover {
-    color: #007bff; /* Hover em tom azul */
-}
+/* Seções gerais */
+section { padding: 60px 20px; max-width: 1200px; margin: 0 auto; background: rgba(255, 255, 255, 0.95); position: relative; z-index: 1; }
 
-/* Seções - Configurações gerais para todas as seções, com fundo semi-transparente pra legibilidade sobre o background */
-section {
-    padding: 60px 20px;
-    max-width: 1200px;
-    margin: 0 auto;
-    background: rgba(255, 255, 255, 0.95); /* Branco semi-opaco só nas seções */
-    position: relative;
-    z-index: 1; /* Médio, acima do overlay do main-content */
-}
+/* Seção home */
+#home { background-color: transparent; text-align: center; border-bottom: none; }
+#home h2 { color: #007bff; margin-bottom: 20px; font-size: 2em; }
+#home p { font-size: 1.1em; margin: 0 auto 30px; max-width: 800px; }
 
-/* Seção #home - Estilo para a seção inicial, com fundo transparente pra não ter retângulo branco */
-#home {
-    background-color: transparent;
-    text-align: center;
-    border-bottom: none;
-}
+/* Seção about */
+#about { background-color: #f8f9fa; text-align: center; }
+#about h2 { color: #333; margin-bottom: 20px; font-size: 2em; }
+#about p { font-size: 1.1em; max-width: 800px; margin: 0 auto; text-align: justify; }
 
-/* Título da seção #home */
-#home h2 {
-    color: #007bff; /* Título em tom azul */
-    margin-bottom: 20px;
-    font-size: 2em;
-}
+/* Seção services */
+#services { background-color: #fff; text-align: center; }
+#services h2 { color: #007bff; margin-bottom: 40px; font-size: 2em; }
 
-/* Parágrafo da seção #home */
-#home p {
-    font-size: 1.1em;
-    margin-bottom: 30px;
-    max-width: 800px;
-    margin-left: auto;
-    margin-right: auto;
-}
+/* Itens de serviço */
+.service-item { display: inline-block; width: 30%; margin: 1.5%; background: linear-gradient(135deg, #fff, #f8f9fa); padding: 30px; border-radius: 10px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); transition: transform 0.3s ease, box-shadow 0.3s ease; vertical-align: top; }
+.service-item:hover { transform: translateY(-5px); box-shadow: 0 6px 20px rgba(0,0,0,0.15); }
+.service-item h3 { color: #007bff; margin-bottom: 15px; font-size: 1.3em; }
+.service-item p { color: #666; line-height: 1.5; }
 
-/* Seção #about - Estilo para a seção "Sobre Nós" */
-#about {
-    background-color: #f8f9fa;
-    text-align: center;
-}
+/* Seção novidades */
+#novidades { background-color: #f8f9fa; text-align: center; }
+#novidades h2 { color: #007bff; margin-bottom: 20px; font-size: 2.5em; text-align: center; }
+#novidades p { font-size: 1.1em; max-width: 800px; margin: 0 auto 30px; text-align: justify; }
 
-/* Título da seção #about */
-#about h2 {
-    color: #333;
-    margin-bottom: 20px;
-    font-size: 2em;
-}
+/* Container de vídeo novidades */
+#novidades .video-container { width: calc(650px * 9 / 16); max-width: 100%; height: 650px; aspect-ratio: 9 / 16; margin: 30px auto; overflow: hidden; border-radius: 15px; box-shadow: 0 6px 20px rgba(0,0,0,0.15); background: #f8f9fa; display: block; }
+#novidades .video-container iframe { width: 100%; height: 100%; display: block; border-radius: 15px; border: none; }
 
-/* Parágrafo da seção #about */
-#about p {
-    font-size: 1.1em;
-    max-width: 800px;
-    margin: 0 auto;
-    text-align: justify;
-}
+/* Seção localização */
+#localizacao { background-color: #f8f9fa; text-align: center; }
+#localizacao h2 { color: #007bff; margin-bottom: 20px; font-size: 2em; text-align: center; }
+#localizacao p { font-size: 1.1em; max-width: 800px; margin: 0 auto 30px; text-align: center; }
+#localizacao iframe { width: 100%; max-width: 600px; height: 400px; border: none; border-radius: 15px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); margin: 20px auto; display: block; }
 
-/* Seção #services - Estilo para a seção de serviços */
-#services {
-    background-color: #fff;
-    text-align: center;
-}
+/* Seção contato */
+#contact { background-color: #f8f9fa; text-align: center; }
+#contact h2 { color: #333; margin-bottom: 20px; font-size: 2em; }
+#contact p { font-size: 1.1em; margin-bottom: 15px; }
 
-/* Título da seção #services */
-#services h2 {
-    color: #007bff; /* Título em tom azul */
-    margin-bottom: 40px;
-    font-size: 2em;
-}
+/* Formulário geral */
+form { max-width: 500px; margin: 0 auto; display: flex; flex-direction: column; gap: 15px; }
+form input, form textarea { padding: 15px; border: 1px solid #ddd; border-radius: 5px; font-size: 1em; transition: border-color 0.3s ease; }
+form input:focus, form textarea:focus { outline: none; border-color: #007bff; }
+form button { padding: 15px; background: linear-gradient(135deg, #007bff, #0056b3); color: #fff; border: none; border-radius: 5px; font-size: 1.1em; cursor: pointer; transition: opacity 0.3s ease; }
+form button:hover { opacity: 0.9; }
 
-/* Itens de serviço - Estilo para os cards de serviços */
-.service-item {
-    display: inline-block;
-    width: 30%;
-    margin: 1.5%;
-    background: linear-gradient(135deg, #fff, #f8f9fa);
-    padding: 30px;
-    border-radius: 10px;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    vertical-align: top;
-}
+/* Rodapé */
+footer { background-color: #333; color: #fff; text-align: center; padding: 20px; font-size: 0.9em; }
 
-/* Efeito hover nos itens de serviço */
-.service-item:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 6px 20px rgba(0,0,0,0.15);
-}
+/* Container de vídeo home */
+.video-container { max-width: 800px; margin: 30px auto; overflow: hidden; border-radius: 15px; box-shadow: 0 6px 20px rgba(0,0,0,0.15); background: #f8f9fa; }
+.video-container video { width: 100%; height: auto; display: block; object-fit: contain; image-rendering: auto; border-radius: 15px; }
 
-/* Título dos itens de serviço */
-.service-item h3 {
-    color: #007bff; /* Título em tom azul */
-    margin-bottom: 15px;
-    font-size: 1.3em;
-}
+/* Rolagem suave */
+html { scroll-behavior: smooth; }
 
-/* Parágrafo dos itens de serviço */
-.service-item p {
-    color: #666;
-    line-height: 1.5;
-}
+/* Links sociais contato */
+#contact a[href^="https://wa.me"], #contact a[href^="https://www.instagram.com"] { text-decoration: none; display: inline-flex; align-items: center; margin: 0 10px; }
 
-/* Seção #novidades - Estilo geral, com título centralizado e maior */
-#novidades {
-    background-color: #f8f9fa; /* Fundo cinza claro pra variar */
-    text-align: center; /* Centraliza todo o conteúdo da seção */
-}
+/* Ícone e link WhatsApp */
+#contact a[href^="https://wa.me"] i { color: #25D366; font-size: 1.5em; margin-right: 5px; transition: transform 0.3s ease, color 0.3s ease; }
+#contact a[href^="https://wa.me"] { color: #25D366; font-weight: bold; }
+#contact a[href^="https://wa.me"]:hover i { transform: scale(1.2); color: #128C7E; }
+#contact a[href^="https://wa.me"]:hover { color: #128C7E; }
 
-/* Título da seção #novidades - Maior e centralizado */
-#novidades h2 {
-    color: #007bff; /* Azul pra combinar com o tema */
-    margin-bottom: 20px;
-    font-size: 2.5em; /* Maior que o padrão (era 2em) */
-    text-align: center; /* Garante centralização */
-}
+/* Ícone e link Instagram */
+#contact a[href^="https://www.instagram.com"] i { color: #E4405F; font-size: 1.5em; margin-right: 5px; transition: transform 0.3s ease, color 0.3s ease; }
+#contact a[href^="https://www.instagram.com"] { color: #E4405F; font-weight: bold; }
+#contact a[href^="https://www.instagram.com"]:hover i { transform: scale(1.2); color: #C13584; }
+#contact a[href^="https://www.instagram.com"]:hover { color: #C13584; }
 
-/* Parágrafo da seção #novidades */
-#novidades p {
-    font-size: 1.1em;
-    max-width: 800px;
-    margin: 0 auto 30px; /* Centralizado com margem inferior pro vídeo */
-    text-align: justify; /* Justificado pra texto fluir */
-}
-
-/* Vídeo na seção #novidades - Container vertical 9:16 com altura fixa de 650px (sem barras pretas) */
-#novidades .video-container {
-    width: calc(650px * 9 / 16); /* Largura calculada pra 9:16 com altura 650px (~366px) */
-    max-width: 100%; /* Não excede a tela */
-    height: 650px; /* Altura fixa em desktop */
-    aspect-ratio: 9 / 16; /* Proporção vertical exata pro Short (sem barras) */
-    margin: 30px auto; /* Centralizado */
-    overflow: hidden;
-    border-radius: 15px;
-    box-shadow: 0 6px 20px rgba(0,0,0,0.15);
-    background: #f8f9fa;
-    display: block; /* Simples, sem flex desnecessário */
-}
-
-/* Estilo do iframe dentro do container de novidades - Preenche 100% sem distorção */
-#novidades .video-container iframe {
-    width: 100%;
-    height: 100%; /* Preenche o container na proporção certa */
-    display: block;
-    border-radius: 15px; /* Arredonda as bordas do iframe */
-    border: none; /* Remove borda padrão do iframe */
-}
-        
-/* Seção #localizacao - Estilo geral  */
-#localizacao {
-    background-color: #f8f9fa; /* Fundo cinza claro */
-    text-align: center; /* Centraliza todo o conteúdo da seção */
-}
-
-/* Título da seção #localizacao - Azul e centralizado */
-#localizacao h2 {
-    color: #007bff; 
-    margin-bottom: 20px;
-    font-size: 2em; /* Tamanho padrão */
-    text-align: center; /* Centralizado */
-}
-
-/* Parágrafo da seção #localizacao - Centralizado e com largura limitada */
-#localizacao p {
-    font-size: 1.1em;
-    max-width: 800px;
-    margin: 0 auto 30px; /* Centralizado com margem inferior pro mapa */
-    text-align: center; /* Centralizado pra endereços */
-}
-
-/* Mapa embed - Responsivo, centralizado e com bordas arredondadas */
-#localizacao iframe {
-    width: 100%; /* Responsivo pra caber na tela */
-    max-width: 600px; /* Limite no desktop pra não ficar gigante */
-    height: 400px; /* Altura fixa do mapa */
-    border: none;
-    border-radius: 15px; /* Bordas arredondadas */
-    box-shadow: 0 4px 15px rgba(0,0,0,0.1); /* Sombra sutil */
-    margin: 20px auto; /* Centralizado com espaçamento */
-    display: block; /* Garante centralização */
-}
-
-/* Seção #contact - Estilo para a seção de contato */
-#contact {
-    background-color: #f8f9fa;
-    text-align: center;
-}
-
-/* Título da seção #contact */
-#contact h2 {
-    color: #333;
-    margin-bottom: 20px;
-    font-size: 2em;
-}
-
-/* Parágrafo da seção #contact */
-#contact p {
-    font-size: 1.1em;
-    margin-bottom: 15px; /* Espaçamento menor entre parágrafos */
-}
-
-/* Formulário - Configurações gerais para o formulário de contato */
-form {
-    max-width: 500px;
-    margin: 0 auto;
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-}
-
-/* Estilo para inputs e textarea do formulário */
-form input,
-form textarea {
-    padding: 15px;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-    font-size: 1em;
-    transition: border-color 0.3s ease;
-}
-
-/* Efeito focus nos inputs e textarea */
-form input:focus,
-form textarea:focus {
-    outline: none;
-    border-color: #007bff; /* Focus em tom azul */
-}
-
-/* Estilo do botão do formulário */
-form button {
-    padding: 15px;
-    background: linear-gradient(135deg, #007bff, #0056b3); /* Gradiente azul no botão */
-    color: #fff;
-    border: none;
-    border-radius: 5px;
-    font-size: 1.1em;
-    cursor: pointer;
-    transition: opacity 0.3s ease;
-}
-
-/* Efeito hover no botão do formulário */
-form button:hover {
-    opacity: 0.9;
-}
-
-/* Footer - Estilo para o rodapé */
-footer {
-    background-color: #333;
-    color: #fff;
-    text-align: center;
-    padding: 20px;
-    font-size: 0.9em;
-}
-
-/* Container para o vídeo geral (home) */
-.video-container {
-    max-width: 70%; /* Reduzido para não ficar gigante */
-    max-width: 800px; /* Limite fixo no desktop */
-    margin: 30px auto; /* Centralizado com espaçamento */
-    overflow: hidden;
-    border-radius: 15px; /* Bordas mais arredondadas pra ficar bonito */
-    box-shadow: 0 6px 20px rgba(0,0,0,0.15); /* Sombra mais suave */
-    background: #f8f9fa; /* Fundo neutro se o vídeo tiver transparência */
-}
-
-/* Estilo do vídeo dentro do container (para home) */
-.video-container video {
-    width: 100%;
-    height: auto;
-    display: block;
-    object-fit: contain; /* Mantém proporção sem esticar */
-    image-rendering: auto; /* Suaviza pixels em baixa resolução */
-    border-radius: 15px; /* Arredonda o vídeo também */
-}
-
-/* Animações suaves - Navegação suave ao rolar a página */
-html {
-    scroll-behavior: smooth;
-}
-
-/* Estilos para ícones sociais na contato (WhatsApp e Instagram) - com texto clicável */
-#contact a[href^="https://wa.me"],
-#contact a[href^="https://www.instagram.com"] {
-    text-decoration: none; /* Remove underline do link */
-    display: inline-flex; /* Alinha ícone e texto na linha */
-    align-items: center; /* Centraliza verticalmente */
-    margin: 0 10px; /* Espaço entre os links */
-}
-
-#contact a[href^="https://wa.me"] i {
-    color: #25D366; /* Verde oficial do WhatsApp */
-    font-size: 1.5em;
-    margin-right: 5px; /* Espaço entre ícone e texto */
-    transition: transform 0.3s ease, color 0.3s ease;
-}
-
-#contact a[href^="https://wa.me"] {
-    color: #25D366; /* Cor do texto igual ao ícone */
-    font-weight: bold; /* Texto em negrito */
-}
-
-#contact a[href^="https://wa.me"]:hover i {
-    transform: scale(1.2); /* Aumenta o ícone no hover */
-    color: #128C7E; /* Verde mais escuro no hover */
-}
-
-#contact a[href^="https://wa.me"]:hover {
-    color: #128C7E; /* Texto muda no hover também */
-}
-
-#contact a[href^="https://www.instagram.com"] i {
-    color: #E4405F; /* Rosa/roxo oficial do Instagram */
-    font-size: 1.5em;
-    margin-right: 5px; /* Espaço entre ícone e texto */
-    transition: transform 0.3s ease, color 0.3s ease;
-}
-
-#contact a[href^="https://www.instagram.com"] {
-    color: #E4405F; /* Cor do texto igual ao ícone */
-    font-weight: bold; /* Texto em negrito */
-}
-
-#contact a[href^="https://www.instagram.com"]:hover i {
-    transform: scale(1.2); /* Aumenta o ícone no hover */
-    color: #C13584; /* Roxo mais escuro no hover */
-}
-
-#contact a[href^="https://www.instagram.com"]:hover {
-    color: #C13584; /* Texto muda no hover também */
-}
-
-/* Responsividade - Ajustes para telas menores (mobile) */
+/* Media query mobile */
 @media (max-width: 768px) {
-    /* Logo do header menor em mobile */
-    header img {
-        max-width: 120px; /* Menor no celular */
-        width: 120px; /* Mantém circular */
-    }
-    
-    /* Links de nav em bloco em mobile */
-    nav a {
-        display: block;
-        margin: 10px 0;
-    }
-    
-    /* Itens de serviço em largura total em mobile */
-    .service-item {
-        width: 100%;
-        margin: 10px 0;
-    }
-    
-    /* Padding reduzido nas seções em mobile */
-    section {
-        padding: 40px 15px;
-    }
-
-    /* Container do vídeo menor em mobile */
-    .video-container {
-        max-width: 90%; /* Maior no mobile pra preencher melhor */
-        margin: 20px auto;
-    }
-    
-    /* Vídeo cobre a área em mobile */
-    .video-container video {
-        object-fit: cover; /* No mobile, cobre a área pra preencher melhor */
-    }
-
-    /* Responsividade pro vídeo de novidades no mobile (preenche tela vertical sem barras) */
-    #novidades .video-container {
-        width: 100%; /* Largura total no mobile */
-        height: auto; /* Altura proporcional baseada na largura */
-        max-height: 650px; /* Limite pra não explodir a tela */
-        aspect-ratio: 9 / 16; /* Mantém proporção vertical sem barras */
-        margin: 20px auto;
-    }
-    
-    #novidades .video-container iframe {
-        height: 100%; /* Preenche o container */
-    }
-    
-    #novidades h2 {
-        font-size: 2em; /* Levemente menor no mobile pra caber */
-    }
-
-    /* Responsividade pra localização no mobile */
-    #localizacao iframe {
-        height: 300px; /* Menor no celular pra caber melhor */
-        margin: 15px auto;
-    }
-    
-    #localizacao p {
-        font-size: 1em; /* Levemente menor no mobile */
-        padding: 0 15px; /* Espaçamento lateral */
-    }
-
-    /* Ícones sociais menores no mobile */
-    #contact a[href^="https://wa.me"] i,
-    #contact a[href^="https://www.instagram.com"] i {
-        font-size: 1.2em; /* Um pouco menor no celular */
-    }
-
-    #contact a[href^="https://wa.me"],
-    #contact a[href^="https://www.instagram.com"] {
-        margin: 0 5px; /* Espaço menor entre links no mobile */
-        font-size: 0.95em; /* Texto um tiquinho menor */
-    }
+    header img { width: 120px; }
+    nav a { display: block; margin: 10px 0; }
+    .service-item { width: 100%; margin: 10px 0; }
+    section { padding: 40px 15px; }
+    .video-container { max-width: 90%; margin: 20px auto; }
+    .video-container video { object-fit: cover; }
+    #novidades .video-container { width: 100%; height: auto; max-height: 650px; aspect-ratio: 9 / 16; margin: 20px auto; }
+    #novidades .video-container iframe { height: 100%; }
+    #novidades h2 { font-size: 2em; }
+    #localizacao iframe { height: 300px; margin: 15px auto; }
+    #localizacao p { font-size: 1em; padding: 0 15px; }
+    #contact a[href^="https://wa.me"] i, #contact a[href^="https://www.instagram.com"] i { font-size: 1.2em; }
+    #contact a[href^="https://wa.me"], #contact a[href^="https://www.instagram.com"] { margin: 0 5px; font-size: 0.95em; }
 }
